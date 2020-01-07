@@ -17,23 +17,23 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// Gets the domain of the endpoint.
         /// </summary>
-        public string Domain { get; private set; }
+        public string Domain { get; }
 
         /// <summary>
         /// Gets a readable name for the endpoint.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the sub folder for the endpoint. The name of sub folder is
         /// language specific - eg. "Sider" for Danish or "Pages" for English.
         /// </summary>
-        public string SubFolder { get; private set; }
+        public string SubFolder { get; }
         
         /// <summary>
         /// Gets the full URL to the webservice endpoint.
         /// </summary>
-        public string EndpointUrl { get; private set; }
+        public string EndpointUrl { get; }
 
         #endregion
 
@@ -56,9 +56,7 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// Gets an array of all known endpoints.
         /// </summary>
-        public static BorgerDkEndpoint[] Values {
-            get { return new [] { Default, LifeInDenmark }; }
-        }
+        public static BorgerDkEndpoint[] Values => new [] { Default, LifeInDenmark };
 
         #endregion
 
@@ -89,7 +87,7 @@ namespace Skybrud.Integrations.BorgerDk {
         public bool IsValidUrl(string url) {
             
             // Obviously an empty URL is not valid
-            if (String.IsNullOrWhiteSpace(url)) return false;
+            if (string.IsNullOrWhiteSpace(url)) return false;
             url = url.Split('?')[0];
             
             // In December 2016, Borger.dk moved to a new CMS that uses a
@@ -152,7 +150,7 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <param name="url">The url.</param>
         /// <returns></returns>
         public static BorgerDkEndpoint GetFromUrl(string url) {
-            return GetFromDomain(Regex.Match(url ?? "", "^https://([a-z]+\\.borger\\.dk)/").Groups[1].Value);
+            return GetFromDomain(Regex.Match(url ?? string.Empty, "^https://([a-z]+\\.borger\\.dk)/").Groups[1].Value);
         }
 
         /// <summary>

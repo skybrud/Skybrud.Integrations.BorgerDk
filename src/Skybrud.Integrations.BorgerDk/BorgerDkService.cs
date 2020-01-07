@@ -5,7 +5,7 @@ namespace Skybrud.Integrations.BorgerDk {
 
     public class BorgerDkService {
 
-        private ArticleExportClient _client;
+        private readonly ArticleExportClient _client;
 
         /// <summary>
         /// A reference to the endpoint (web service).
@@ -61,7 +61,7 @@ namespace Skybrud.Integrations.BorgerDk {
 
         public int GetArticleIdFromUrl(string url) {
             ArticleShortDescription desc = _client.GetArticleIDByUrl(url);
-            return desc == null ? 0 : desc.ArticleID;
+            return desc?.ArticleID ?? 0;
         }
 
         public BorgerDkArticle GetArticleFromId(int articleId) {

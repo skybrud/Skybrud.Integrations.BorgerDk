@@ -109,7 +109,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 if (IsEmptyOrWhitespace(span)) {
                     try {
                         span.Remove();
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         // ignore exception
                     }
                 }
@@ -119,7 +119,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 if (IsEmptyOrWhitespace(paragraph)) {
                     try {
                         paragraph.Remove();
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         // ignore exception
                     }
                 }
@@ -129,7 +129,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 if (IsEmptyOrWhitespace(div)) {
                     try {
                         div.Remove();
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         // ignore exception
                     }
                 }

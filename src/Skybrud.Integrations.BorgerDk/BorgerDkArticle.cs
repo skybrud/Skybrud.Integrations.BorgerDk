@@ -20,153 +20,87 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// The ID of the article.
         /// </summary>
-        public int Id { get; private set; }
+        public int Id { get; }
 
         /// <summary>
         /// The domain for the article
         /// </summary>
-        public string Domain { get; private set; }
+        public string Domain { get; }
 
         /// <summary>
         /// The url for the article
         /// </summary>
-        public string Url { get; private set; }
+        public string Url { get; }
 
         /// <summary>
         /// Gets a reference to the municipality of the article.
         /// </summary>
-        public BorgerDkMunicipality Municipality { get; private set; }
+        public BorgerDkMunicipality Municipality { get; }
 
         /// <summary>
         /// The title of the article.
         /// </summary>
-        public string Title { get; private set; }
+        public string Title { get; }
 
         /// <summary>
         /// The header of the article.
         /// </summary>
-        public string Header { get; private set; }
+        public string Header { get; }
 
         /// <summary>
         /// The date for when the article was published
         /// </summary>
-        public EssentialsTime Published { get; private set; }
+        public EssentialsTime Published { get; }
 
         /// <summary>
         /// The date for when the article was last modified
         /// </summary>
-        public EssentialsTime Modified { get; private set; }
+        public EssentialsTime Modified { get; }
 
         /// <summary>
         /// Gets the raw HTML making up the content of the article.
         /// </summary>
-        public string Content { get; private set; }
+        public string Content { get; }
 
         /// <summary>
         /// Gets an array of all elements parsed from the article content.
         /// </summary>
-        public BorgerDkElement[] Elements { get; private set; }
+        public BorgerDkElement[] Elements { get; }
 
         /// <summary>
         /// Gets the byline of the article.
         /// </summary>
-        public string ByLine { get; private set; }
+        public string ByLine { get; }
         
         #endregion
 
         #region Constructors
 
-        private BorgerDkArticle() { }
-
-        #endregion
-
-        #region Constructors
-
-        [Obsolete("This is a legacy method and really shouldn't be used. Use method overload instead.")]
-        public XElement ToXElement(int municipalityId, int reloadInterval) {
-
-            XElement xElements = new XElement("xml");
-
-            foreach (BorgerDkElement element in Elements) {
-                xElements.Add(element.ToXElement());
-            }
-
-            XElement xArticle = new XElement(
-                "article",
-                new XElement("id", Id),
-                new XElement("domain", Domain),
-                new XElement("url", Url),
-                new XElement("municipalityid", municipalityId),
-                new XElement("reloadinterval", reloadInterval),
-                new XElement("lastreloaded", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("publishingdate", Published.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("lastupdated", Modified.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("title", Title),
-                new XElement("header", Header),
-                new XElement("html", new XCData(Content)),
-                xElements
-            );
-
-            return xArticle;
-
-        }
-
-        public XElement ToXElement() {
-
-            XElement xElements = new XElement("xml");
-
-            foreach (BorgerDkElement element in Elements) {
-                xElements.Add(element.ToXElement());
-            }
-
-            XElement xArticle = new XElement(
-                "article",
-                new XElement("id", Id),
-                new XElement("domain", Domain),
-                new XElement("url", Url),
-                new XElement("municipalityid", Municipality.Code),
-                new XElement("lastreloaded", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("publishingdate", Published.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("lastupdated", Modified.ToString("yyyy-MM-dd HH:mm:ss")),
-                new XElement("title", Title),
-                new XElement("header", Header),
-                new XElement("html", new XCData(Content)),
-                xElements
-            );
-
-            return xArticle;
-
-        }
-
-        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article) {
-            return GetFromArticle(service, article, null);
-        }
-
-        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article, BorgerDkMunicipality municipality) {
-
-            municipality = municipality ?? BorgerDkMunicipality.NoMunicipality;
+        private BorgerDkArticle(BorgerDkService service, Article article, BorgerDkMunicipality municipality) {
 
             // Check if "service" or "article" is null
-            if (service == null) throw new ArgumentNullException("service");
-            if (article == null) throw new ArgumentNullException("article");
+            if (service == null) throw new ArgumentNullException(nameof(service));
+            if (article == null) throw new ArgumentNullException(nameof(article));
+
+            municipality = municipality ?? BorgerDkMunicipality.NoMunicipality;
 
             // Get the Danish time zone
             TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
 
+            // Assume the timstamp are specified according to the Danish time zone
             DateTimeOffset published = new DateTimeOffset(article.PublishingDate, tz.GetUtcOffset(article.PublishingDate));
             DateTimeOffset updated = new DateTimeOffset(article.LastUpdated, tz.GetUtcOffset(article.LastUpdated));
 
-            BorgerDkArticle temp = new BorgerDkArticle {
-                Id = article.ArticleID,
-                Domain = service.Endpoint.Domain,
-                Url = article.ArticleUrl.Split('?')[0],
-                Municipality = municipality,
-                Title = HttpUtility.HtmlDecode(article.ArticleTitle),
-                Header = HttpUtility.HtmlDecode(article.ArticleHeader),
-                Published = new EssentialsTime(published, tz),
-                Modified = new EssentialsTime(updated, tz),
-                Content = article.Content
-            };
+            // Populate basic properties
+            Id = article.ArticleID;
+            Domain = service.Endpoint.Domain;
+            Url = article.ArticleUrl.Split('?')[0];
+            Municipality = municipality;
+            Title = HttpUtility.HtmlDecode(article.ArticleTitle);
+            Header = HttpUtility.HtmlDecode(article.ArticleHeader);
+            Published = new EssentialsTime(published, tz);
+            Modified = new EssentialsTime(updated, tz);
+            Content = article.Content;
 
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(article.Content);
@@ -240,12 +174,12 @@ namespace Skybrud.Integrations.BorgerDk {
                         }
                     }
 
-                    temp.ByLine = node.InnerHtml.Trim();
+                    ByLine = node.InnerHtml.Trim();
 
                     BorgerDkTextElement element = new BorgerDkTextElement {
                         Type = id,
                         Title = "Skrevet af",
-                        Content = temp.ByLine,
+                        Content = ByLine,
                         Children = new [] { xChild }
                     };
 
@@ -291,9 +225,26 @@ namespace Skybrud.Integrations.BorgerDk {
 
             }
 
-            temp.Elements = elements.ToArray();
-            
-            return temp;
+            Elements = elements.ToArray();
+
+
+        }
+
+        #endregion
+
+        #region Static methods
+
+        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article) {
+            return GetFromArticle(service, article, null);
+        }
+
+        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article, BorgerDkMunicipality municipality) {
+
+            // Check if "service" or "article" is null
+            if (service == null) throw new ArgumentNullException(nameof(service));
+            if (article == null) throw new ArgumentNullException(nameof(article));
+
+            return new BorgerDkArticle(service, article, municipality ?? BorgerDkMunicipality.NoMunicipality);
 
         }
 
