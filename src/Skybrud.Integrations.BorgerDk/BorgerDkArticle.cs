@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using HtmlAgilityPack;
+using Skybrud.Essentials.Time;
 using Skybrud.Integrations.BorgerDk.Elements;
 using Skybrud.Integrations.BorgerDk.WebService;
 
@@ -49,12 +50,12 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// The date for when the article was published
         /// </summary>
-        public DateTime Published { get; private set; }
+        public EssentialsTime Published { get; private set; }
 
         /// <summary>
         /// The date for when the article was last modified
         /// </summary>
-        public DateTime Modified { get; private set; }
+        public EssentialsTime Modified { get; private set; }
 
         /// <summary>
         /// Gets the raw HTML making up the content of the article.
@@ -149,6 +150,12 @@ namespace Skybrud.Integrations.BorgerDk {
             if (service == null) throw new ArgumentNullException("service");
             if (article == null) throw new ArgumentNullException("article");
 
+            // Get the Danish time zone
+            TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset published = new DateTimeOffset(article.PublishingDate, tz.GetUtcOffset(article.PublishingDate));
+            DateTimeOffset updated = new DateTimeOffset(article.LastUpdated, tz.GetUtcOffset(article.LastUpdated));
+
             BorgerDkArticle temp = new BorgerDkArticle {
                 Id = article.ArticleID,
                 Domain = service.Endpoint.Domain,
@@ -156,8 +163,8 @@ namespace Skybrud.Integrations.BorgerDk {
                 Municipality = municipality,
                 Title = HttpUtility.HtmlDecode(article.ArticleTitle),
                 Header = HttpUtility.HtmlDecode(article.ArticleHeader),
-                Published = article.PublishingDate,
-                Modified = article.LastUpdated,
+                Published = new EssentialsTime(published, tz),
+                Modified = new EssentialsTime(updated, tz),
                 Content = article.Content
             };
 
