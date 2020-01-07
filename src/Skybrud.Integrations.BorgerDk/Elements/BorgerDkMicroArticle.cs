@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace Skybrud.BorgerDk.Elements {
+namespace Skybrud.Integrations.BorgerDk.Elements {
     
     public class BorgerDkMicroArticle {
 

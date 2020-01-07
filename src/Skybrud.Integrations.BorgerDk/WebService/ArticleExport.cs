@@ -8,17 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Runtime.Serialization.ContractNamespaceAttribute("http://www.borger.dk/2009/WSArticleExport/v1/types", ClrNamespace="www.borger.dk._2009.WSArticleExport.v1.types")]
-[assembly: System.Runtime.Serialization.ContractNamespaceAttribute("http://www.borger.dk/2009/WSArticleExport/v2/types", ClrNamespace="www.borger.dk._2009.WSArticleExport.v2.types")]
+using System;
+using System;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
-namespace www.borger.dk._2009.WSArticleExport.v1.types
+[assembly: ContractNamespace("http://www.borger.dk/2009/WSArticleExport/v1/types", ClrNamespace="www.borger.dk._2009.WSArticleExport.v1.types")]
+[assembly: ContractNamespace("http://www.borger.dk/2009/WSArticleExport/v2/types", ClrNamespace="www.borger.dk._2009.WSArticleExport.v2.types")]
+
+namespace Skybrud.Integrations.BorgerDk.WebService
 {
-    using System.Runtime.Serialization;
-    
-    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ArticleDescription", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="ArticleDescription", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class ArticleDescription : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -30,11 +33,11 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
         
         private string ArticleUrlField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] FormServiceAreasField;
+        private FormServiceArea[] FormServiceAreasField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] FormTaskAreasField;
+        private FormTaskArea[] FormTaskAreasField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] FormTasksField;
+        private FormTask[] FormTasksField;
         
         private System.DateTime LastUpdatedField;
         
@@ -52,7 +55,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int ArticleID
         {
             get
@@ -65,7 +68,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleTitle
         {
             get
@@ -78,7 +81,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleUrl
         {
             get
@@ -91,8 +94,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] FormServiceAreas
+        [DataMember()]
+        public FormServiceArea[] FormServiceAreas
         {
             get
             {
@@ -104,8 +107,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] FormTaskAreas
+        [DataMember()]
+        public FormTaskArea[] FormTaskAreas
         {
             get
             {
@@ -117,8 +120,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] FormTasks
+        [DataMember()]
+        public FormTask[] FormTasks
         {
             get
             {
@@ -130,7 +133,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime LastUpdated
         {
             get
@@ -143,7 +146,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime PublishingDate
         {
             get
@@ -159,7 +162,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FormServiceArea", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="FormServiceArea", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class FormServiceArea : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -181,7 +184,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormServiceAreaName
         {
             get
@@ -194,7 +197,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormServiceAreaNumber
         {
             get
@@ -210,7 +213,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FormTaskArea", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="FormTaskArea", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class FormTaskArea : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -232,7 +235,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormTaskAreaName
         {
             get
@@ -245,7 +248,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormTaskAreaNumber
         {
             get
@@ -261,7 +264,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FormTask", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="FormTask", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class FormTask : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -283,7 +286,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormTaskName
         {
             get
@@ -296,7 +299,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FormTaskNumber
         {
             get
@@ -312,7 +315,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Article", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="Article", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class Article : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -328,11 +331,11 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
         
         private string ContentField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] FormServiceAreasField;
+        private FormServiceArea[] FormServiceAreasField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] FormTaskAreasField;
+        private FormTaskArea[] FormTaskAreasField;
         
-        private www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] FormTasksField;
+        private FormTask[] FormTasksField;
         
         private System.DateTime LastUpdatedField;
         
@@ -350,7 +353,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleHeader
         {
             get
@@ -363,7 +366,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int ArticleID
         {
             get
@@ -376,7 +379,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleTitle
         {
             get
@@ -389,7 +392,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleUrl
         {
             get
@@ -402,7 +405,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Content
         {
             get
@@ -415,8 +418,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] FormServiceAreas
+        [DataMember()]
+        public FormServiceArea[] FormServiceAreas
         {
             get
             {
@@ -428,8 +431,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] FormTaskAreas
+        [DataMember()]
+        public FormTaskArea[] FormTaskAreas
         {
             get
             {
@@ -441,8 +444,8 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] FormTasks
+        [DataMember()]
+        public FormTask[] FormTasks
         {
             get
             {
@@ -454,7 +457,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime LastUpdated
         {
             get
@@ -467,7 +470,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime PublishingDate
         {
             get
@@ -483,7 +486,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ArticleShortDescription", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="ArticleShortDescription", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class ArticleShortDescription : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -505,7 +508,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int ArticleID
         {
             get
@@ -518,7 +521,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ArticleTitle
         {
             get
@@ -534,7 +537,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Municipality", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
+    [DataContract(Name="Municipality", Namespace="http://www.borger.dk/2009/WSArticleExport/v1/types")]
     public partial class Municipality : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -556,7 +559,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int MunicipalityCode
         {
             get
@@ -569,7 +572,7 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string MunicipalityName
         {
             get
@@ -582,15 +585,10 @@ namespace www.borger.dk._2009.WSArticleExport.v1.types
             }
         }
     }
-}
-namespace www.borger.dk._2009.WSArticleExport.v2.types
-{
-    using System.Runtime.Serialization;
-    
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Site", Namespace="http://www.borger.dk/2009/WSArticleExport/v2/types")]
+    [DataContract(Name="Site", Namespace="http://www.borger.dk/2009/WSArticleExport/v2/types")]
     public partial class Site : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -616,7 +614,7 @@ namespace www.borger.dk._2009.WSArticleExport.v2.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Nullable<int> ParentID
         {
             get
@@ -629,7 +627,7 @@ namespace www.borger.dk._2009.WSArticleExport.v2.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int SiteID
         {
             get
@@ -642,7 +640,7 @@ namespace www.borger.dk._2009.WSArticleExport.v2.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string SiteName
         {
             get
@@ -655,7 +653,7 @@ namespace www.borger.dk._2009.WSArticleExport.v2.types
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string SiteTitle
         {
             get
@@ -668,215 +666,204 @@ namespace www.borger.dk._2009.WSArticleExport.v2.types
             }
         }
     }
-}
-namespace ITST.Borgerdk.Export.Common.WcfContracts
-{
-    using System;
-    
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.SerializableAttribute()]
-    public partial class ArticleExportException : System.ServiceModel.FaultExceptionOfArticleFaulttsA8QZpB
+    [Serializable()]
+    public partial class ArticleExportException : FaultExceptionOfArticleFaulttsA8QZpB
     {
         
         public ArticleExportException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
-                base(info, context)
+            base(info, context)
         {
         }
     }
-}
-namespace System.ServiceModel
-{
-    using System;
-    using System.Runtime.Serialization;
-    
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException))]
+    [Serializable()]
+    [KnownType(typeof(ArticleExportException))]
     public partial class FaultExceptionOfArticleFaulttsA8QZpB : System.ServiceModel.FaultException
     {
         
         public FaultExceptionOfArticleFaulttsA8QZpB(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : 
-                base(info, context)
+            base(info, context)
         {
         }
     }
-}
 
 
-[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(Namespace="http://www.borger.dk/2009/WSArticleExport/v1", ConfigurationName="IArticleExport")]
-public interface IArticleExport
-{
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.borger.dk/2009/WSArticleExport/v1", ConfigurationName="IArticleExport")]
+    public interface IArticleExport
+    {
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllArticles", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllArticlesRespons" +
-        "e")]
-    www.borger.dk._2009.WSArticleExport.v1.types.ArticleDescription[] GetAllArticles();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllArticles", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllArticlesRespons" +
+                                                                                                                                                         "e")]
+        ArticleDescription[] GetAllArticles();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByID", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByIDRespons" +
-        "e")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByIDArticle" +
-        "ExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.Article GetArticleByID(int articleID, System.Nullable<int> municipalityCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByID", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByIDRespons" +
+                                                                                                                                                         "e")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleByIDArticle" +
+                                                                                                                                    "ExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        Article GetArticleByID(int articleID, System.Nullable<int> municipalityCode);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrl", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrlResp" +
-        "onse")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrlArti" +
-        "cleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription GetArticleIDByUrl(string url);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrl", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrlResp" +
+                                                                                                                                                            "onse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDByUrlArti" +
+                                                                                                                                    "cleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        ArticleShortDescription GetArticleIDByUrl(string url);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
-        "rviceArea", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
-        "rviceAreaResponse")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
-        "rviceAreaArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsByFormServiceArea(string formServiceAreaNumber, System.Nullable<System.DateTime> updatedAfter);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
+                                                               "rviceArea", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
+                                                                                        "rviceAreaResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormSe" +
+                                                                                                                                    "rviceAreaArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        ArticleShortDescription[] GetArticleIDsByFormServiceArea(string formServiceAreaNumber, System.Nullable<System.DateTime> updatedAfter);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
-        "skArea", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
-        "skAreaResponse")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
-        "skAreaArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsByFormTaskArea(string formTaskAreaNumber, System.Nullable<System.DateTime> updatedAfter);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
+                                                               "skArea", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
+                                                                                     "skAreaResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsByFormTa" +
+                                                                                                                                    "skAreaArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        ArticleShortDescription[] GetArticleIDsByFormTaskArea(string formTaskAreaNumber, System.Nullable<System.DateTime> updatedAfter);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
-        "s", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
-        "sResponse")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
-        "sArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.Article[] GetArticlesByFormTasks(string[] formTaskNumbers, System.Nullable<bool> useLogicalAnd, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
+                                                               "s", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
+                                                                                "sResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByFormTask" +
+                                                                                                                                    "sArticleExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        Article[] GetArticlesByFormTasks(string[] formTaskNumbers, System.Nullable<bool> useLogicalAnd, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDs", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDsRespo" +
-        "nse")]
-    [System.ServiceModel.FaultContractAttribute(typeof(ITST.Borgerdk.Export.Common.WcfContracts.ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDsArtic" +
-        "leExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
-    www.borger.dk._2009.WSArticleExport.v1.types.Article[] GetArticlesByIDs(int[] articleIDs, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDs", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDsRespo" +
+                                                                                                                                                           "nse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ArticleExportException), Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticlesByIDsArtic" +
+                                                                                                                                    "leExportExceptionFault", Name="ArticleExportException", Namespace="http://schemas.datacontract.org/2004/07/ITST.Borgerdk.Export.Common.WcfContracts")]
+        Article[] GetArticlesByIDs(int[] articleIDs, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormServiceAreaLis" +
-        "t", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormServiceAreaLis" +
-        "tResponse")]
-    www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] GetFormServiceAreaList();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormServiceAreaLis" +
+                                                               "t", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormServiceAreaLis" +
+                                                                                "tResponse")]
+        FormServiceArea[] GetFormServiceAreaList();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskAreaList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskAreaListRe" +
-        "sponse")]
-    www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] GetFormTaskAreaList();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskAreaList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskAreaListRe" +
+                                                                                                                                                              "sponse")]
+        FormTaskArea[] GetFormTaskAreaList();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskListRespon" +
-        "se")]
-    www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] GetFormTaskList();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetFormTaskListRespon" +
+                                                                                                                                                          "se")]
+        FormTask[] GetFormTaskList();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetMunicipalityList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetMunicipalityListRe" +
-        "sponse")]
-    www.borger.dk._2009.WSArticleExport.v1.types.Municipality[] GetMunicipalityList();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetMunicipalityList", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetMunicipalityListRe" +
+                                                                                                                                                              "sponse")]
+        Municipality[] GetMunicipalityList();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllSites", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllSitesResponse")]
-    www.borger.dk._2009.WSArticleExport.v2.types.Site[] GetAllSites();
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllSites", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetAllSitesResponse")]
+        Site[] GetAllSites();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsBySiteID" +
-        "", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsBySiteID" +
-        "Response")]
-    www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsBySiteID(int siteID);
-}
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsBySiteID" +
+                                                               "", ReplyAction="http://www.borger.dk/2009/WSArticleExport/v1/IArticleExport/GetArticleIDsBySiteID" +
+                                                                               "Response")]
+        ArticleShortDescription[] GetArticleIDsBySiteID(int siteID);
+    }
 
-[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-public interface IArticleExportChannel : IArticleExport, System.ServiceModel.IClientChannel
-{
-}
-
-[System.Diagnostics.DebuggerStepThroughAttribute()]
-[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-public partial class ArticleExportClient : System.ServiceModel.ClientBase<IArticleExport>, IArticleExport
-{
-    
-    public ArticleExportClient()
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    public interface IArticleExportChannel : IArticleExport, System.ServiceModel.IClientChannel
     {
     }
+
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    public partial class ArticleExportClient : System.ServiceModel.ClientBase<IArticleExport>, IArticleExport
+    {
     
-    public ArticleExportClient(string endpointConfigurationName) : 
+        public ArticleExportClient()
+        {
+        }
+    
+        public ArticleExportClient(string endpointConfigurationName) : 
             base(endpointConfigurationName)
-    {
-    }
+        {
+        }
     
-    public ArticleExportClient(string endpointConfigurationName, string remoteAddress) : 
+        public ArticleExportClient(string endpointConfigurationName, string remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
-    {
-    }
+        {
+        }
     
-    public ArticleExportClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ArticleExportClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
-    {
-    }
+        {
+        }
     
-    public ArticleExportClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ArticleExportClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(binding, remoteAddress)
-    {
-    }
+        {
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.ArticleDescription[] GetAllArticles()
-    {
-        return base.Channel.GetAllArticles();
-    }
+        public ArticleDescription[] GetAllArticles()
+        {
+            return base.Channel.GetAllArticles();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.Article GetArticleByID(int articleID, System.Nullable<int> municipalityCode)
-    {
-        return base.Channel.GetArticleByID(articleID, municipalityCode);
-    }
+        public Article GetArticleByID(int articleID, System.Nullable<int> municipalityCode)
+        {
+            return base.Channel.GetArticleByID(articleID, municipalityCode);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription GetArticleIDByUrl(string url)
-    {
-        return base.Channel.GetArticleIDByUrl(url);
-    }
+        public ArticleShortDescription GetArticleIDByUrl(string url)
+        {
+            return base.Channel.GetArticleIDByUrl(url);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsByFormServiceArea(string formServiceAreaNumber, System.Nullable<System.DateTime> updatedAfter)
-    {
-        return base.Channel.GetArticleIDsByFormServiceArea(formServiceAreaNumber, updatedAfter);
-    }
+        public ArticleShortDescription[] GetArticleIDsByFormServiceArea(string formServiceAreaNumber, System.Nullable<System.DateTime> updatedAfter)
+        {
+            return base.Channel.GetArticleIDsByFormServiceArea(formServiceAreaNumber, updatedAfter);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsByFormTaskArea(string formTaskAreaNumber, System.Nullable<System.DateTime> updatedAfter)
-    {
-        return base.Channel.GetArticleIDsByFormTaskArea(formTaskAreaNumber, updatedAfter);
-    }
+        public ArticleShortDescription[] GetArticleIDsByFormTaskArea(string formTaskAreaNumber, System.Nullable<System.DateTime> updatedAfter)
+        {
+            return base.Channel.GetArticleIDsByFormTaskArea(formTaskAreaNumber, updatedAfter);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.Article[] GetArticlesByFormTasks(string[] formTaskNumbers, System.Nullable<bool> useLogicalAnd, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter)
-    {
-        return base.Channel.GetArticlesByFormTasks(formTaskNumbers, useLogicalAnd, municipalityCode, updatedAfter);
-    }
+        public Article[] GetArticlesByFormTasks(string[] formTaskNumbers, System.Nullable<bool> useLogicalAnd, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter)
+        {
+            return base.Channel.GetArticlesByFormTasks(formTaskNumbers, useLogicalAnd, municipalityCode, updatedAfter);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.Article[] GetArticlesByIDs(int[] articleIDs, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter)
-    {
-        return base.Channel.GetArticlesByIDs(articleIDs, municipalityCode, updatedAfter);
-    }
+        public Article[] GetArticlesByIDs(int[] articleIDs, System.Nullable<int> municipalityCode, System.Nullable<System.DateTime> updatedAfter)
+        {
+            return base.Channel.GetArticlesByIDs(articleIDs, municipalityCode, updatedAfter);
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.FormServiceArea[] GetFormServiceAreaList()
-    {
-        return base.Channel.GetFormServiceAreaList();
-    }
+        public FormServiceArea[] GetFormServiceAreaList()
+        {
+            return base.Channel.GetFormServiceAreaList();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.FormTaskArea[] GetFormTaskAreaList()
-    {
-        return base.Channel.GetFormTaskAreaList();
-    }
+        public FormTaskArea[] GetFormTaskAreaList()
+        {
+            return base.Channel.GetFormTaskAreaList();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.FormTask[] GetFormTaskList()
-    {
-        return base.Channel.GetFormTaskList();
-    }
+        public FormTask[] GetFormTaskList()
+        {
+            return base.Channel.GetFormTaskList();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.Municipality[] GetMunicipalityList()
-    {
-        return base.Channel.GetMunicipalityList();
-    }
+        public Municipality[] GetMunicipalityList()
+        {
+            return base.Channel.GetMunicipalityList();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v2.types.Site[] GetAllSites()
-    {
-        return base.Channel.GetAllSites();
-    }
+        public Site[] GetAllSites()
+        {
+            return base.Channel.GetAllSites();
+        }
     
-    public www.borger.dk._2009.WSArticleExport.v1.types.ArticleShortDescription[] GetArticleIDsBySiteID(int siteID)
-    {
-        return base.Channel.GetArticleIDsBySiteID(siteID);
+        public ArticleShortDescription[] GetArticleIDsBySiteID(int siteID)
+        {
+            return base.Channel.GetArticleIDsBySiteID(siteID);
+        }
     }
 }

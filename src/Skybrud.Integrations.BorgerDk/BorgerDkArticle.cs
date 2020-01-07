@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using HtmlAgilityPack;
-using Skybrud.BorgerDk.Elements;
-using www.borger.dk._2009.WSArticleExport.v1.types;
+using Skybrud.Integrations.BorgerDk.Elements;
+using Skybrud.Integrations.BorgerDk.WebService;
 
-namespace Skybrud.BorgerDk {
+namespace Skybrud.Integrations.BorgerDk {
 
     /// <summary>
     /// Class representing an article received from the Borger.dk web service.

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using www.borger.dk._2009.WSArticleExport.v1.types;
+using Skybrud.Integrations.BorgerDk.WebService;
 
-namespace Skybrud.BorgerDk {
+namespace Skybrud.Integrations.BorgerDk {
 
     public class BorgerDkService {
 

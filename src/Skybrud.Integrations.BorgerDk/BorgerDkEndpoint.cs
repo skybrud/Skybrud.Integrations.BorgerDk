@@ -6,8 +6,9 @@ using System.ServiceModel.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using Skybrud.Integrations.BorgerDk.WebService;
 
-namespace Skybrud.BorgerDk {
+namespace Skybrud.Integrations.BorgerDk {
 
     public class BorgerDkEndpoint {
 

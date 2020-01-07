@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace Skybrud.BorgerDk {
+namespace Skybrud.Integrations.BorgerDk {
 
     /// <summary>
     /// Class representing a reference to a municipality.

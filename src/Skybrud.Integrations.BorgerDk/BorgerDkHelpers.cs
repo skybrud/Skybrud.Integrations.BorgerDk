@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using HtmlAgilityPack;
 
-namespace Skybrud.BorgerDk {
+namespace Skybrud.Integrations.BorgerDk {
 
     public static class BorgerDkHelpers {
 
