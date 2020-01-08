@@ -50,12 +50,12 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// The date for when the article was published
         /// </summary>
-        public EssentialsTime Published { get; }
+        public EssentialsTime PublishDate { get; }
 
         /// <summary>
-        /// The date for when the article was last modified
+        /// The date for when the article was last updated.
         /// </summary>
-        public EssentialsTime Modified { get; }
+        public EssentialsTime UpdateDate { get; }
 
         /// <summary>
         /// Gets the raw HTML making up the content of the article.
@@ -98,8 +98,8 @@ namespace Skybrud.Integrations.BorgerDk {
             Municipality = municipality;
             Title = HttpUtility.HtmlDecode(article.ArticleTitle);
             Header = HttpUtility.HtmlDecode(article.ArticleHeader);
-            Published = new EssentialsTime(published, tz);
-            Modified = new EssentialsTime(updated, tz);
+            PublishDate = new EssentialsTime(published, tz);
+            UpdateDate = new EssentialsTime(updated, tz);
             Content = article.Content;
 
             HtmlDocument htmlDocument = new HtmlDocument();
