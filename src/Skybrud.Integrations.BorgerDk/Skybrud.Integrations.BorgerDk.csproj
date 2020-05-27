@@ -4,13 +4,25 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
+    <Version>1.0.0-beta001</Version>
     <Authors>Anders Bjerner</Authors>
     <Company>Skybrud.dk</Company>
+    <Product>Skybrud.Integrations</Product>
     <Copyright>Copyright © 2020</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Skybrud.Integrations.BorgerDk</PackageId>
+    <PackageTags>Skybrud, Borger.dk, selvbetjening, web service, artikel</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/skybrud/Skybrud.Integrations.BorgerDk</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/skybrud/Skybrud.Integrations.BorgerDk</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,5 +33,9 @@
   <ItemGroup>
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(BuildTools)'=='1'">
+    <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
+  </Target>
 
 </Project>
