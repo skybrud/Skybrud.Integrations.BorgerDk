@@ -9,4 +9,5 @@ namespace Skybrud.Integrations.BorgerDk.Exceptions {
         public BorgerDkException(string message, Exception innerException) : base(message, innerException) { }
 
     }
+
 }
