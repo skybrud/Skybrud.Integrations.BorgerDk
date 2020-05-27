@@ -6,8 +6,6 @@ namespace Skybrud.Integrations.BorgerDk.Elements {
 
         public string Id { get; internal set; }
 
-        public string Type { get; internal set; }
-
     }
 
 }

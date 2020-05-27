@@ -136,7 +136,7 @@ namespace Skybrud.Integrations.BorgerDk {
 
             Elements = ParseElements(Content);
 
-            ByLine = StringUtils.StripHtml(Elements.OfType<BorgerDkTextElement>().FirstOrDefault(x => x.Type == "byline")?.Content);
+            ByLine = StringUtils.StripHtml(Elements.OfType<BorgerDkTextElement>().FirstOrDefault(x => x.Id == "byline")?.Content);
 
         }
 
@@ -159,7 +159,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 if (id == "kernetekst") {
 
                     BorgerDkBlockElement block = new BorgerDkBlockElement {
-                        Type = id
+                        Id = id
                     };
 
                     List<BorgerDkMicroArticle> microArticles = new List<BorgerDkMicroArticle>();
@@ -202,7 +202,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 } else if (id == "byline") {
 
                     BorgerDkTextElement element = new BorgerDkTextElement {
-                        Type = id,
+                        Id = id,
                         Title = "Skrevet af",
                         Content = node.InnerText.Trim()
                     };
@@ -230,7 +230,7 @@ namespace Skybrud.Integrations.BorgerDk {
                     string title = children[0].InnerText;
 
                     BorgerDkTextElement element = new BorgerDkTextElement {
-                        Type = id,
+                        Id = id,
                         Title = title,
                         Content = node.InnerHtml
                     };
