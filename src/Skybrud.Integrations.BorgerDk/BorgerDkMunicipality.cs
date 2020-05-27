@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
+using Skybrud.Integrations.BorgerDk.Json;
 
 namespace Skybrud.Integrations.BorgerDk {
 
     /// <summary>
     /// Class representing a reference to a municipality.
     /// </summary>
+    [JsonConverter(typeof(BorgerDkJsonConverter))]
     public class BorgerDkMunicipality {
 
         #region Contants
@@ -206,6 +209,16 @@ namespace Skybrud.Integrations.BorgerDk {
 
         public static BorgerDkMunicipality GetFromCode(string code) {
             return Values.FirstOrDefault(x => x.Code.ToString(CultureInfo.InvariantCulture) == code) ?? NoMunicipality;
+        }
+
+        public static bool TryGetFromCode(int code, out BorgerDkMunicipality municipality) {
+            municipality = Values.FirstOrDefault(x => x.Code == code);
+            return municipality != null;
+        }
+
+        public static bool TryGetFromCode(string code, out BorgerDkMunicipality municipality) {
+            municipality = Values.FirstOrDefault(x => x.Code.ToString(CultureInfo.InvariantCulture) == code);
+            return municipality != null;
         }
 
         #endregion

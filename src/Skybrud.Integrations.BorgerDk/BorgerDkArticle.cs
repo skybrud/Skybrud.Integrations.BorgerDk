@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Time;
 using Skybrud.Integrations.BorgerDk.Elements;
 using Skybrud.Integrations.BorgerDk.WebService;
@@ -20,63 +24,91 @@ namespace Skybrud.Integrations.BorgerDk {
         /// <summary>
         /// The ID of the article.
         /// </summary>
+        [JsonProperty("id")]
         public int Id { get; }
 
         /// <summary>
         /// The domain for the article
         /// </summary>
+        [JsonProperty("domain")]
         public string Domain { get; }
 
         /// <summary>
         /// The url for the article
         /// </summary>
+        [JsonProperty("url")]
         public string Url { get; }
 
         /// <summary>
         /// Gets a reference to the municipality of the article.
         /// </summary>
+        [JsonProperty("municipality")]
         public BorgerDkMunicipality Municipality { get; }
 
         /// <summary>
         /// The title of the article.
         /// </summary>
+        [JsonProperty("title")]
         public string Title { get; }
 
         /// <summary>
         /// The header of the article.
         /// </summary>
+        [JsonProperty("header")]
         public string Header { get; }
+
+        /// <summary>
+        /// Gets the byline with information about who has written the article.
+        /// </summary>
+        [JsonProperty("byline")]
+        public string ByLine { get; }
 
         /// <summary>
         /// The date for when the article was published
         /// </summary>
+        [JsonProperty("publishDate")]
         public EssentialsTime PublishDate { get; }
 
         /// <summary>
         /// The date for when the article was last updated.
         /// </summary>
+        [JsonProperty("updateDate")]
         public EssentialsTime UpdateDate { get; }
 
         /// <summary>
         /// Gets the raw HTML making up the content of the article.
         /// </summary>
+        [JsonProperty("content")]
         public string Content { get; }
 
         /// <summary>
         /// Gets an array of all elements parsed from the article content.
         /// </summary>
+        [JsonIgnore]
         public BorgerDkElement[] Elements { get; }
-
-        /// <summary>
-        /// Gets the byline of the article.
-        /// </summary>
-        public string ByLine { get; }
         
         #endregion
 
         #region Constructors
 
-        private BorgerDkArticle(BorgerDkService service, Article article, BorgerDkMunicipality municipality) {
+        public BorgerDkArticle(JObject obj) {
+
+            Id = obj.GetInt32("id");
+            Domain = obj.GetString("domain");
+            Url = obj.GetString("url");
+            Municipality = obj.GetInt32("municipality", BorgerDkMunicipality.GetFromCode);
+            Title = obj.GetString("title");
+            Header = obj.GetString("header");
+            ByLine = obj.GetString("byline");
+            PublishDate = obj.GetString("publishDate", EssentialsTime.Parse);
+            UpdateDate = obj.GetString("updateDate", EssentialsTime.Parse);
+            Content = obj.GetString("content");
+
+            Elements = ParseElements(Content);
+
+        }
+
+        private BorgerDkArticle(BorgerDkHttpService service, Article article, BorgerDkMunicipality municipality) {
 
             // Check if "service" or "article" is null
             if (service == null) throw new ArgumentNullException(nameof(service));
@@ -102,8 +134,18 @@ namespace Skybrud.Integrations.BorgerDk {
             UpdateDate = new EssentialsTime(updated, tz);
             Content = article.Content;
 
+            Elements = ParseElements(Content);
+
+            ByLine = StringUtils.StripHtml(Elements.OfType<BorgerDkTextElement>().FirstOrDefault(x => x.Type == "byline")?.Content);
+
+        }
+
+        #endregion
+
+        private BorgerDkElement[] ParseElements(string content) {
+            
             HtmlDocument htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(article.Content);
+            htmlDocument.LoadHtml(content);
             htmlDocument.OptionOutputAsXml = false;
 
             List<BorgerDkElement> elements = new List<BorgerDkElement>();
@@ -117,7 +159,7 @@ namespace Skybrud.Integrations.BorgerDk {
                 if (id == "kernetekst") {
 
                     BorgerDkBlockElement block = new BorgerDkBlockElement {
-                        Type = "kernetekst"                         
+                        Type = id
                     };
 
                     List<BorgerDkMicroArticle> microArticles = new List<BorgerDkMicroArticle>();
@@ -174,12 +216,10 @@ namespace Skybrud.Integrations.BorgerDk {
                         }
                     }
 
-                    ByLine = node.InnerHtml.Trim();
-
                     BorgerDkTextElement element = new BorgerDkTextElement {
                         Type = id,
                         Title = "Skrevet af",
-                        Content = ByLine,
+                        Content = node.InnerHtml.Trim(),
                         Children = new [] { xChild }
                     };
 
@@ -225,20 +265,17 @@ namespace Skybrud.Integrations.BorgerDk {
 
             }
 
-            Elements = elements.ToArray();
-
+            return elements.ToArray();
 
         }
-
-        #endregion
 
         #region Static methods
 
-        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article) {
+        public static BorgerDkArticle GetFromArticle(BorgerDkHttpService service, Article article) {
             return GetFromArticle(service, article, null);
         }
 
-        public static BorgerDkArticle GetFromArticle(BorgerDkService service, Article article, BorgerDkMunicipality municipality) {
+        public static BorgerDkArticle GetFromArticle(BorgerDkHttpService service, Article article, BorgerDkMunicipality municipality) {
 
             // Check if "service" or "article" is null
             if (service == null) throw new ArgumentNullException(nameof(service));

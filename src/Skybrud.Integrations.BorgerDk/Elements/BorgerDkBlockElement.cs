@@ -8,11 +8,9 @@ namespace Skybrud.Integrations.BorgerDk.Elements {
 
         public override XElement ToXElement() {
             
-            XElement xKernetekst = new XElement(
-                Type
-                );
+            XElement xKernetekst = new XElement(Type);
 
-            foreach (var micro in MicroArticles) {
+            foreach (BorgerDkMicroArticle micro in MicroArticles) {
                 xKernetekst.Add(micro.ToXElement());
             }
 
