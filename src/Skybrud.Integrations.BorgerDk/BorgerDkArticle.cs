@@ -171,7 +171,7 @@ namespace Skybrud.Integrations.BorgerDk {
                         // Get the ID of the micro article
                         string microId = child.Attributes["id"].Value.Replace("microArticle_", "");
 
-                        HtmlNode[] children = BorgerDkHelpers.GetNonTextChildren(child);
+                        HtmlNode[] children = GetNonTextChildren(child);
 
                         // Trigger exception if empty
                         if (children.Length == 0) throw new Exception("What's happening? #1 (" + microId + ")");
@@ -182,18 +182,13 @@ namespace Skybrud.Integrations.BorgerDk {
                         // Get the title from the <h2>
                         string title = children[0].InnerText;
 
+                        // Initialize a new micro article
                         BorgerDkMicroArticle micro = new BorgerDkMicroArticle {
                             Parent = block,
                             Id = microId,
                             Title = title.Trim(),
                             TitleType = children[0].Name,
-                            Content = child.InnerHtml.Trim(),
-                            Children = (
-                                from n in children
-                                let e = BorgerDkHelpers.ToXElement(n)
-                                where e.Attributes().Count() >= 0 && e.Value != ""
-                                select BorgerDkHelpers.CleanMicroArticle(e)
-                            )
+                            Content = child.InnerHtml.Trim()
                         };
 
                         microArticles.Add(micro);
@@ -206,21 +201,10 @@ namespace Skybrud.Integrations.BorgerDk {
 
                 } else if (id == "byline") {
 
-                    XElement xChild = BorgerDkHelpers.ToXElement(node);
-
-                    if (xChild.Elements().Count() == 1) {
-                        XElement xDiv = xChild.Element("div");
-                        if (xDiv != null && !xDiv.Elements().Any()) {
-                            xDiv.Remove();
-                            xChild.Add(xDiv.Value);
-                        }
-                    }
-
                     BorgerDkTextElement element = new BorgerDkTextElement {
                         Type = id,
                         Title = "Skrevet af",
-                        Content = node.InnerHtml.Trim(),
-                        Children = new [] { xChild }
+                        Content = node.InnerText.Trim()
                     };
 
                     // Add the element
@@ -228,7 +212,7 @@ namespace Skybrud.Integrations.BorgerDk {
 
                 } else {
 
-                    HtmlNode[] children = BorgerDkHelpers.GetNonTextChildren(node);
+                    HtmlNode[] children = GetNonTextChildren(node);
 
                     // Handle if empty
                     if (children.Length == 0) {
@@ -248,14 +232,7 @@ namespace Skybrud.Integrations.BorgerDk {
                     BorgerDkTextElement element = new BorgerDkTextElement {
                         Type = id,
                         Title = title,
-                        Content = node.InnerHtml,
-                        Children = (
-                            from child in children
-                            //where child.Name != "h3"
-                            let e = BorgerDkHelpers.ToXElement(child)
-                            where e.Attributes().Count() >= 0 && e.Value != ""
-                            select BorgerDkHelpers.CleanLists(e)
-                        )
+                        Content = node.InnerHtml
                     };
 
                     // Add the element
@@ -267,6 +244,10 @@ namespace Skybrud.Integrations.BorgerDk {
 
             return elements.ToArray();
 
+        }
+
+        private HtmlNode[] GetNonTextChildren(HtmlNode node) {
+            return node.ChildNodes.Where(child => !(child is HtmlTextNode)).ToArray();
         }
 
         #region Static methods

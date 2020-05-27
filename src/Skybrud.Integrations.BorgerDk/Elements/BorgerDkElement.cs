@@ -8,8 +8,6 @@ namespace Skybrud.Integrations.BorgerDk.Elements {
 
         public string Type { get; internal set; }
 
-        public abstract XElement ToXElement();
-
     }
 
 }
