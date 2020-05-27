@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Xml.Linq;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -256,7 +255,7 @@ namespace Skybrud.Integrations.BorgerDk {
             str = str.Replace((char) 160, ' ');
 
             return str;
-;
+
         }
 
         #region Static methods
