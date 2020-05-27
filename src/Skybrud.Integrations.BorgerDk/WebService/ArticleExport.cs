@@ -9,9 +9,6 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: ContractNamespace("http://www.borger.dk/2009/WSArticleExport/v1/types", ClrNamespace="www.borger.dk._2009.WSArticleExport.v1.types")]
