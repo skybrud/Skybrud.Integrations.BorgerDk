@@ -188,7 +188,7 @@ namespace Skybrud.Integrations.BorgerDk {
                             Id = microId,
                             Title = title.Trim(),
                             TitleType = children[0].Name,
-                            Content = child.InnerHtml.Trim()
+                            Content = FixSimpleErrors(child.InnerHtml.Trim())
                         };
 
                         microArticles.Add(micro);
@@ -232,7 +232,7 @@ namespace Skybrud.Integrations.BorgerDk {
                     BorgerDkTextElement element = new BorgerDkTextElement {
                         Id = id,
                         Title = title,
-                        Content = node.InnerHtml
+                        Content = FixSimpleErrors(node.InnerHtml)
                     };
 
                     // Add the element
@@ -248,6 +248,15 @@ namespace Skybrud.Integrations.BorgerDk {
 
         private HtmlNode[] GetNonTextChildren(HtmlNode node) {
             return node.ChildNodes.Where(child => !(child is HtmlTextNode)).ToArray();
+        }
+
+        private string FixSimpleErrors(string str) {
+
+            // Replace non-breaking spaces as they typically appear to be inserted by mistake
+            str = str.Replace((char) 160, ' ');
+
+            return str;
+;
         }
 
         #region Static methods
