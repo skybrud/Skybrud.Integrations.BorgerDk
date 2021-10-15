@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0-beta001</Version>
+    <Version>1.0.0</Version>
     <Authors>Anders Bjerner</Authors>
     <Company>Skybrud.dk</Company>
     <Product>Skybrud.Integrations</Product>
