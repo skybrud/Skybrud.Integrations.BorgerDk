@@ -1,13 +1,21 @@
 # Skybrud.Integrations.BorgerDk
 
-C#-bibliotek til kommunikation med Borger.dk's webservices. Dette bibliotek er CMS-uafhængigt.
+C# (.NET) library for communicating with the Borger.dk web service.
 
-#### Opdatering af SOAP-klient ###
+## Installation
 
-Skal SOAP-klienten opdateres, kan følgende kommando afvikles fra konsollen:
+Install via [NuGet](https://www.nuget.org/packages/Skybrud.Integrations.BorgerDk):
+
+```
+Install-Package Skybrud.Integrations.BorgerDk
+```
+
+## Development
+
+The package contains a SOAP client for the communication with the Borger.dk web service. The client can be updated by running the following command:
 
 ```
 svcutil.exe https://www.borger.dk/_vti_bin/borger/ArticleExport.svc?wsdl
 ```
 
-Kommandoen vil generere de nødvendige klasser for, at kunne lave objekt-orienterede kald til webservicen.
+Calling `svcutil.exe` with the above URL will generate the necessary classes for making object oriented calls to the web service.
