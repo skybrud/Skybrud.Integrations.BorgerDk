@@ -102,6 +102,8 @@ namespace Skybrud.Integrations.BorgerDk {
 
         #region Static methods
 
+#if NET_FRAMEWORK
+
         /// <summary>
         /// Gets the default binding used to communicate with the Borger.dk webservices.
         /// </summary>
@@ -142,6 +144,46 @@ namespace Skybrud.Integrations.BorgerDk {
                 }
             };
         }
+
+#else
+        /// <summary>
+        /// Gets the default binding used to communicate with the Borger.dk webservices.
+        /// </summary>
+        public static Binding GetDefaultBinding() {
+            return new BasicHttpBinding {
+                CloseTimeout = TimeSpan.FromMinutes(1),
+                OpenTimeout = TimeSpan.FromMinutes(1),
+                ReceiveTimeout = TimeSpan.FromMinutes(10),
+                SendTimeout = TimeSpan.FromMinutes(1),
+                AllowCookies = false,
+                BypassProxyOnLocal = false,
+                MaxBufferSize = 1048576, // 1 MB
+                MaxBufferPoolSize = 524288,
+                MaxReceivedMessageSize = 1048576, // 1 MB
+                TextEncoding = Encoding.UTF8,
+                TransferMode = TransferMode.Buffered,
+                UseDefaultWebProxy = true,
+                ReaderQuotas = new XmlDictionaryReaderQuotas {
+                    MaxDepth = 32,
+                    MaxStringContentLength = 65536,
+                    MaxArrayLength = 16384,
+                    MaxBytesPerRead = 4096,
+                    MaxNameTableCharCount = 16384
+                },
+                Security = new BasicHttpSecurity {
+                    Mode = BasicHttpSecurityMode.Transport,
+                    Transport = new HttpTransportSecurity {
+                        ClientCredentialType = HttpClientCredentialType.None,
+                        ProxyCredentialType = HttpProxyCredentialType.None
+                    },
+                    Message = new BasicHttpMessageSecurity {
+                        ClientCredentialType = BasicHttpMessageCredentialType.UserName
+                    }
+                }
+            };
+        }
+
+#endif
 
         /// <summary>
         /// Gets the endpoint from the specified URL. If no matching endpoint can be

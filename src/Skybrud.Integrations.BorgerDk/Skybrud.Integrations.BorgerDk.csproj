@@ -3,7 +3,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;netstandard2.0</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
 
@@ -25,10 +25,26 @@
     <RepositoryUrl>https://github.com/skybrud/Skybrud.Integrations.BorgerDk</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <DefineConstants>NET_STANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
+    <DefineConstants>NET_FRAMEWORK</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System.ServiceModel" />
     <PackageReference Include="HtmlAgilityPack" Version="1.5.0" />
     <PackageReference Include="Skybrud.Essentials" Version="1.1.30" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0'">
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="System.ServiceModel.Http" Version="4.8.1" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
