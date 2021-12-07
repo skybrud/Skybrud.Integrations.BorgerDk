@@ -10,14 +10,14 @@
   <PropertyGroup>
     <Version>1.0.0</Version>
     <Authors>Anders Bjerner</Authors>
-    <Company>Skybrud.dk</Company>
+    <Company>Limbo</Company>
     <Product>Skybrud.Integrations</Product>
     <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>Skybrud.Integrations.BorgerDk</PackageId>
-    <PackageTags>Skybrud, Borger.dk, selvbetjening, web service, artikel</PackageTags>
+    <PackageTags>Skybrud, Limbo, Borger.dk, selvbetjening, web service, artikel</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/skybrud/Skybrud.Integrations.BorgerDk</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
