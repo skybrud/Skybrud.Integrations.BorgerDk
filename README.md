@@ -1,10 +1,18 @@
 # Skybrud.Integrations.BorgerDk
 
-C# (.NET) library for communicating with the Borger.dk web service.
+.NET library for communicating with the Borger.dk web service.
 
 ## Installation
 
-Install via [NuGet](https://www.nuget.org/packages/Skybrud.Integrations.BorgerDk):
+The package can be installed via [NuGet](https://www.nuget.org/packages/Skybrud.Integrations.BorgerDk):
+
+Either via the .NET CLI:
+
+```
+dotnet add package Skybrud.Integrations.BorgerDk
+```
+
+or the older NuGet Package Manager:
 
 ```
 Install-Package Skybrud.Integrations.BorgerDk
