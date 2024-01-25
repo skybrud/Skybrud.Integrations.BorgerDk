@@ -1,6 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <td align="left">
+        :warning:
+      </td>
+      <td align="left" width="100%">
+          <strong>NOTICE</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">
+          This package is no longer in active development. See the <a href="https://github.com/limbo-works/Limbo.Integrations.BorgerDk"><strong>Limbo.Integrations.BorgerDk</strong></a> package instead.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 # Skybrud.Integrations.BorgerDk
 
 .NET library for communicating with the Borger.dk web service.
+
+
+
+
+<br /><br /><br /><br /><br />
+
 
 ## Installation
 
